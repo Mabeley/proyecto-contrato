@@ -1,0 +1,52 @@
+<div class="fondo">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <figure class="img-center">
+            <img class="img-fluid" src="assets/img/kisspng.png" alt="" />
+          </figure>
+          <form [formGroup]="loginForm" (ngSubmit)="onClick()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label color-important"
+                >Correo electronico</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+                
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label color-important"
+                >Contraseña</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+               
+              />
+            </div>
+            <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label color-important" 
+              for="exampleCheck1"
+                >Recordar contraseña</label
+              >
+            </div>
+            <button 
+            
+             type="submit" 
+            class="btn btn-primary">Iniciar sesion</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

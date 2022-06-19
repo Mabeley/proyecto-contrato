@@ -1,0 +1,44 @@
+.fondo{
+    background-image: url(../../../assets/img/negocios.jpg) ;
+    background-size: cover, no-repeat;
+    z-index: -1;
+    height: 100vh;
+    width: 100wh;
+}
+.fondo::before{
+    content: "";
+    width: 100%;
+    min-height:100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#232526,#414345);
+    opacity: 0.5;
+}
+.card{
+    margin-top:10px;
+    border:none;
+    width:500px;
+    padding:40px;
+    position:absolute;
+    top: 50%;
+    left:50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    background:rgba(5,7,12,0.40);
+    
+
+}
+.img-center{
+    display: flex;
+    justify-content: center;
+    padding-top:20px;
+
+}
+img{
+    max-width: 100px;
+    max-height: 100px;
+}
+.color-important{
+    color: #fff !important
+}
