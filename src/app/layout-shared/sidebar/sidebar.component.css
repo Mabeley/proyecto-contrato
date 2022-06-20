@@ -44,7 +44,12 @@
 }
 .profile-text{
     text-align:center;
-    margin:5rem;
+    margin:3rem;
     color: #fff;
 }
-
+.display{
+    margin-top:5rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
