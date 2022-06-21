@@ -8,6 +8,7 @@ import { CargaEnvioModule } from './carga-envio/carga-envio.module';
 import { LayoutModule } from './layout-shared/layout-shared.module';
 import { PerfilModule } from './perfil/perfil.module';
 import { PrincipalModule } from './principal/principal.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PrincipalModule } from './principal/principal.module';
     LayoutModule,
     CargaEnvioModule,
     AuthModule,
+    BrowserAnimationsModule,
     
   
   
