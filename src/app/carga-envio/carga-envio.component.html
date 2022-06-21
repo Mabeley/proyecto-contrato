@@ -1,39 +1,107 @@
-<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button> -->
-  <mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Cargar Contrato</ng-template>
-        <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Siguiente</button>
+<body id="page-top">
+  <section  style="padding: 35px 10px;">
+    <div class="container" style="margin-top: 90px;">
+      <div class="row justify-content-center" style="margin-bottom: -15px;">
+        <div class="login-dark" style="background-image: none;width: 95%;background-color: #F0F2F0;padding: 40px;border-radius: 4px;box-shadow: 3px 3px 4px rgba(0,0,0,0.2);height: auto;">
+          <h2 class="text-center" style="color:  #243B55;font-size: 26px; margin-bottom:50px;">Carga y Envío de Contratos</h2>
+            <div class="container-fluid">
+              <div class="row justify-content-center mt-0">
+                <div class="col-md-10 col-lg-9 text-center p-0 mt-3 mb-2">
+                  <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <!-- <ul id="progressbar">
+                      <li class="active" id="account"><strong>Cargar Contrato</strong></li>
+                      <li id="personal"><strong>Revisar Muestras</strong></li>
+                      <li id="payment"><strong>Iniciar Proceso</strong></li>
+                      <li id="confirm"><strong>Confirmar</strong></li>
+                  </ul> -->
+                <mat-stepper [linear]="isLinear" #stepper>
+                      <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup">
+                          <ng-template matStepLabel>Cargar Contrato</ng-template>
+                            <section id="form-total-p-0" role="tabpanel" aria-labelledby="form-total-h-0" class="body current" aria-hidden="false">
+                              <div class="inner col-lg-5">
+                                  <div class="form-row">
+                                      <div class="form-holder form-holder-2 label_left">
+                                          <label for="first-name">Tipo de Documento</label>
+                                          <select class="form-select" aria-label="Default select example" >
+                                              <option selected>Seleccione</option>
+                                              <option value="1">Contrato Laboral</option>
+                                              <option value="2">Contrato Mercantil</option>
+                                              <option value="3">Orden de Servicio</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                                  <br>
+                                  <div class="form-row">
+                                      <div class="form-holder form-holder-2 label_left">
+                                          <label for="last-name">Formato</label>
+                                          <select class="form-select" aria-label="Default select example">
+                                              <option selected>Seleccione</option>
+                                              <option value="2">Tiempo Completo</option>
+                                              <option value="1">Tiempo Parcial</option>
+                                          </select>
+                                      </div>
+                                      <br>
+                                      <div class="file-select" id="src-file1" >
+                                        <input type="file" name="src-file1" aria-label="Archivo">
+                                      </div>                             
+                                    </div>
+                              </div>
+                          </section>
+                          <div><br><p align="left"><button mat-button matStepperNext class="btn btn-dark col-lg-2">Siguiente</button></p></div>
+                        </form>
+                      </mat-step>
+                      <mat-step [stepControl]="secondFormGroup" label="Revisar Muestras">
+                        <form [formGroup]="secondFormGroup">
+                            <div class="container">
+                              <table class="table" style="margin:0px;">
+                                <thead style="background-color: rgba(52,58,64,0.75);color: rgb(255,255,255);">
+                                    <tr>
+                                        <th class="align-middle">DNI</th>
+                                        <th class="align-middle"><strong>Nombre</strong><br></th>
+                                        <th class="align-middle"><strong>Apellido</strong><br></th>
+                                        <th class="align-middle" style="text-align: center;">Ver PDF</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="align-middle">5986785<br></td>
+                                        <td class="align-middle">Sandra Anita<br></td>
+                                        <td class="align-middle">Cordova Linares<br></td>
+                                        <td class="text-center"><p><a href="https://www.ujaen.es/servicios/negapoyo/sites/servicio_negapoyo/files/uploads/Modelo%20Archivo%20en%20Formato%20Digital.pdf" target="_blank"><img src="/assets/img/PDF.png" width="24 " height="24"/></a></p></td></tr>
+                                    <tr>
+                                        <td class="align-middle">8547965</td>
+                                        <td class="align-middle">Adina Soraya<br></td>
+                                        <td class="align-middle">Ramirez Junior<br></td>
+                                        <td class="text-center"><p><a href="https://riuma.uma.es/xmlui/static/pdf/politica-riuma_es.pdf" target="_blank"><img src="/assets/img/PDF.png" width="24 " height="24"/></a></p></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                            <br>
+                          <div>
+                            <p align="left"><button mat-button matStepperPrevious class="btn btn-secondary col-lg-2">Regresar</button>&nbsp;
+                                <button mat-button matStepperNext class="btn btn-dark col-lg-2">Siguiente</button></p>      
+                          </div>
+                        </form>
+                      </mat-step>
+                      <mat-step>
+                        <ng-template matStepLabel>Confirmar</ng-template>
+                        <br>
+                        <p>Iniciar envío de Contratos.</p>
+                        <br>
+                        <div>
+                          <p align="left"><button mat-button matStepperPrevious class="btn btn-secondary col-lg-2">Regresar</button>&nbsp;
+                              <button mat-button (click)="stepper.reset()" class="btn btn-dark col-lg-2">Enviar</button></p>      
+                        </div>
+                      </mat-step>
+                    </mat-stepper>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Revisar Muestras">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Regresar</button>
-          <button mat-button matStepperNext>Siguiente</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Iniciar Proceso</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Regresar</button>
-        <button mat-button (click)="stepper.reset()">Enviar</button>
       </div>
-    </mat-step>
-  </mat-stepper>
-  
+    </div>
+  </section>
+</body>
