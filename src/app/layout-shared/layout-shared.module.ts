@@ -4,13 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FullLayoutComponent } from './full-layout/full-layout.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { InicioComponent } from './inicio/inicio.component';
+
 
 @NgModule({
     declarations: [
         FullLayoutComponent,
         SidebarComponent,
-        InicioComponent
+        
 
     ],
     imports: [ 
@@ -18,7 +18,7 @@ import { InicioComponent } from './inicio/inicio.component';
         RouterModule.forChild([])],
     exports:[
         FullLayoutComponent,
-        InicioComponent
+       
     ],
     
 
