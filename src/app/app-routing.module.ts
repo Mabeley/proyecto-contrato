@@ -7,7 +7,6 @@ const routes: Routes = [
   redirectTo:'/principal',
  pathMatch:"full"
   },
-  {path:'carga-envio', component:CargaEnvioComponent}
 ];
 
 @NgModule({
