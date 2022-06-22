@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -7,7 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private rg:FormBuilder
+  ) { }
+  registerForm= this.rg.group({
+    nombre:['', Validators.required],
+    apellido:['', Validators.required],
+    email:['',[Validators.required, Validators.email]],
+    password:['',Validators.required, ],
+  })
+
+  onClick(){
+    if(this.registerForm.valid){
+      console.log(this.registerForm.value)
+    }else{
+      alert("Datos ingresados erroneamente")
+    }
+
+  }
 
   ngOnInit(): void {
   }
