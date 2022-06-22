@@ -3,10 +3,10 @@ import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-carga-envio',
-  templateUrl: './carga-envio.component.html',
-  styleUrls: ['./carga-envio.component.css']
+  templateUrl: 'carga-envio.component.html',
+  styleUrls: ['carga-envio.component.css']
 })
-export class CargaEnvioComponent implements OnInit {
+export class CargaEnvioComponent {
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -17,7 +17,6 @@ export class CargaEnvioComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
-  }
+  
 
 }
