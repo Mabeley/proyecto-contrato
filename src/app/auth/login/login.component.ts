@@ -68,18 +68,6 @@ export class LoginComponent implements OnInit {
     }
 
 
-
-
-
-
-
-    // onClick(){
-    //   if(this.authForm.valid){
-    //     this.login(this.authForm.value)
-    //   }else{
-    //     alert("Formulario no valido")
-    //   }
-    // }
     // onClick(){
       // this.loginService.login(this.authForm.value.).subscribe(res=> {
       //   if(res =='failure'){
