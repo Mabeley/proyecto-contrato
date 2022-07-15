@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     login(data:any){
       console.log("ejemplo login")
       console.log(data)
+      
       this.loginService.login(data).subscribe((rest:any)=>{
         console.log(rest);
          if(rest.estadoRespuesta == "OK"){
