@@ -9,12 +9,13 @@ import { LayoutModule } from './layout-shared/layout-shared.module';
 import { PerfilModule } from './perfil/perfil.module';
 import { PrincipalModule } from './principal/principal.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CambiarClaveComponent,
+  
     
   ],
   imports: [
@@ -26,7 +27,8 @@ import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
     LayoutModule,
     CargaEnvioModule,
     AuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [], 
   bootstrap: [AppComponent]
