@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     onClick(){
       if(this.authForm.valid){
         this.login(this.authForm.value)
+        console.log("Ingrese a la segunda parte")
       }else{
         alert("Formulario no valido")
       }
