@@ -17,58 +17,49 @@
                               <div class="inner col-lg-5">
                                 <div class="form-row">
                                       <div class="form-holder form-holder-2 label_left">
-                                          <label for="first-name">Tipo de Documento</label>
-                                          <select class="form-select" aria-label="Default select example" >
-                                            <option selected>Seleccione</option>
-                                            <option *ngFor="let t of types">{{t.nombre}}</option>
-                                        </select>                                      </div>
+                                          <label for="first-name">Tipo de Contrato</label>
+                                        <select name="cboTipos" id="cboTipos" class="form-control">
+                                          <option *ngFor="let tipo of this.types"
+                                                [value]="tipo.idTipo">{{tipo.nombre}}
+                                        </option>
+                                      </select>                                    
+                                      </div>
                                   </div>
                                   <br>
                                   <div class="form-row">
-                                      <div class="form-holder form-holder-2 label_left">
-                                          <label for="last-name">Formato</label>
-                                          <select class="form-select" aria-label="Default select example">
-                                              <option selected>Seleccione</option>
-                                              <option value="2">Tiempo Completo</option>
-                                              <option value="1">Tiempo Parcial</option>
-                                          </select>
-                                      </div>
-                                      <br>
                                       <div class="file-select" id="src-file1" >
-                                        <input type="file" (change)="getFile($event)" aria-label="Archivo"/>
+                                        <input type="file" (change)="cargarArchivo($event)" aria-label="Archivo"/>
                                       </div>                             
                                     </div>
                               </div>
                           </section>
-                          <div><br><p align="left"><button (click)="sendFile()" mat-button matStepperNext class="btn1 col-lg-2" background-color="#0e3274bf" >Siguiente</button></p></div>
+                          <div><br><p align="left"><button mat-button matStepperNext class="btn1 col-lg-2" background-color="#0e3274bf" >Siguiente</button></p></div>
                         </form>
                       </mat-step>
                       <mat-step [stepControl]="secondFormGroup" label="Revisar Muestras">
                         <form [formGroup]="secondFormGroup">
                             <div class="container">
-                              <table class="table" style="margin:0px;">
+                              
+                              <table class="table" style="margin:0px;" >
                                 <thead style="background-color: #0e3274bf;color: rgb(255,255,255);">
                                     <tr>
-                                        <th class="align-middle">DNI</th>
-                                        <th class="align-middle"><strong>Nombre</strong><br></th>
-                                        <th class="align-middle"><strong>Apellido</strong><br></th>
+                                        <th class="align-middle">Nombre</th>
+                                        <th class="align-middle"><strong>Puesto</strong><br></th>
+                                        <th class="align-middle"><strong>DNI</strong><br></th>
                                         <th class="align-middle" style="text-align: center;">Ver PDF</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="align-middle">5986785<br></td>
-                                        <td class="align-middle">Sandra Anita<br></td>
-                                        <td class="align-middle">Cordova Linares<br></td>
-                                        <td class="text-center"><p><a href="https://www.ujaen.es/servicios/negapoyo/sites/servicio_negapoyo/files/uploads/Modelo%20Archivo%20en%20Formato%20Digital.pdf" target="_blank"><img src="/assets/img/PDF.png" width="24 " height="24"/></a></p></td></tr>
-                                    <tr>
-                                        <td class="align-middle">8547965</td>
-                                        <td class="align-middle">Adina Soraya<br></td>
-                                        <td class="align-middle">Ramirez Junior<br></td>
-                                        <td class="text-center"><p><a href="https://riuma.uma.es/xmlui/static/pdf/politica-riuma_es.pdf" target="_blank"><img src="/assets/img/PDF.png" width="24 " height="24"/></a></p></td>
+                                    <tr *ngFor="let contrato of this.contratos">
+                                        <td class="align-middle">{{contrato.nombre}}<br></td>
+                                        <td class="align-middle">{{contrato.puesto}}<br></td>
+                                        <td class="align-middle">{{contrato.dni}}<br></td>
+                                        <td class="text-center"><p><a href="https://www.ujaen.es/servicios/negapoyo/sites/servicio_negapoyo/files/uploads/Modelo%20Archivo%20en%20Formato%20Digital.pdf" target="_blank"><img src="/assets/img/PDF.png" width="24 " height="24"/></a></p></td>
                                     </tr>
+
                                 </tbody>
                             </table>
+
                             </div>
                             <br>
                           <div>
@@ -86,7 +77,7 @@
                         <br>
                         <div>
                           <p align="left"><button mat-button matStepperPrevious class="btn2 col-lg-2">Regresar</button>&nbsp;
-                              <button mat-button (click)="stepper.reset()" class="btn1 col-lg-2">Enviar</button></p>      
+                              <button mat-button (click)="procesarData()" class="btn1 col-lg-2">Enviar</button></p>      
                         </div>
                       </mat-step>
                     </mat-stepper>

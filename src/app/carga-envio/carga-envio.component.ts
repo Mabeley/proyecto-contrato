@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { SendDataService } from '../services/send-data.service';
 import { TypeService } from '../services/type.service';
+import { HandlerLibreriaFile } from 'src/app/utils/handlerLibreriaFile';
+
 
 @Component({
   selector: 'app-carga-envio',
@@ -10,8 +12,8 @@ import { TypeService } from '../services/type.service';
 })
 export class CargaEnvioComponent implements OnInit {
 
-  private fileTmp : any
-
+  //private fileTmp : any
+  extensionesPermitidas: Array<string> = ["xlsx"];
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -27,28 +29,72 @@ export class CargaEnvioComponent implements OnInit {
   ) {}
 
   types: any = []
+  contratos: any = []
 
   getTypes(){
       this.tp.getTypes().subscribe((rest: any) =>{
-        this.types = rest.data;
-        console.log(this.types)
+        console.log(rest)
+        this.types = rest;        
       })
   }
 
-  getFile($event: any): void {
-    const [ file ] = $event.target.files;
-    this.fileTmp = {
-      fileRaw : file,
-      fileName : file.name 
+  getMuestra(){
+    this.tp.getMuestra().subscribe((rest: any) =>{
+      console.log(rest)
+      this.contratos = rest.parametros.lstDocumentos;        
+    })
+}
+
+
+  public cargarArchivo(event: any) {
+
+    let handlerLibreriaFile = new HandlerLibreriaFile(event);
+    let mensaje = handlerLibreriaFile.validarArchivoCorrecto(this.extensionesPermitidas);
+
+    let fileTmp:File = event.target.files[0];
+    console.log(fileTmp);
+
+    if (mensaje) {
+      alert(mensaje);
+      return;
     }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(fileTmp);
+    reader.onload = () => {
+
+        var envio = 
+        {
+            "datos":String(reader.result).split(",")[1],
+            "idTipo": 1,
+            "idUsuario":1
+        };
+
+        this._service.enviarArchivo(envio).subscribe((rest: any) => {
+          console.log(rest);
+          if(rest.estadoRespuesta == "OK"){
+            sessionStorage.setItem('idEnvio', rest.parametros.idEnvio);
+            console.log(rest);
+            this.getMuestra();
+            }else{
+              alert(rest.mensajeRespuesta); 
+            }
+        });
+
+    };
+
+    
   }
 
-  sendFile(): void {
-    const body = new FormData();
-    body.append('myFile', this.fileTmp.fileRaw, this.fileTmp.fileName)
-
-    this._service.sendPost(body)
-    .subscribe(res => console.log(res))
+  procesarData() {
+    this._service.procesarData().subscribe((rest: any) =>{
+      console.log(rest)
+      if(rest.estadoRespuesta == "OK"){
+        window.location.reload();
+        }else{
+          alert("Error al procesar contratos"); 
+        }
+    })
   }
 
   ngOnInit(): void {

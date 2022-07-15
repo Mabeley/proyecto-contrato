@@ -16,7 +16,7 @@ export class LoginService {
 
     let myHeader = new HttpHeaders();
         myHeader = myHeader.set('Content-Type', 'application/json');
-        myHeader = myHeader.set('Access-Control-Allow-Origin', 'http://localhost:4200');
+       // myHeader = myHeader.set('Access-Control-Allow-Origin', 'http://localhost:4200');
         return this.http.post<Response>(this.uri + '/contractadm/seguridad/acceso',data, { headers: myHeader });
     //return this.http.post<any>(this.uri + '/contractadm/seguridad/acceso',data)
     // return this.httClient.post(this.uri,email,password)

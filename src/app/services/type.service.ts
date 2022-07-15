@@ -14,6 +14,32 @@ export class TypeService {
   ) { }
 
   getTypes(){
-    return this.http.get(this.uri + '/contractadm/proceso/listartipo');
+    let usuario = sessionStorage.getItem('usuario');
+    if (usuario != null) {
+      var data = JSON.parse(usuario);
+      let myHeader = new HttpHeaders();
+      myHeader = myHeader.set('Content-Type', 'application/json');
+      myHeader = myHeader.set('Authorization', 'Bearer ' + data.token);
+      return this.http.get(this.uri + '/contractadm/proceso/listartipos', { headers: myHeader })
+    }else {
+      console.log("sin sesion");
+      return this.http.get(this.uri + '/contractadm/proceso/listartipos')
+    }
   }
+
+  getMuestra(){
+    let usuario = sessionStorage.getItem('usuario');
+    let envio = sessionStorage.getItem('idEnvio');
+    if (usuario != null) {
+      var data = JSON.parse(usuario);
+      let myHeader = new HttpHeaders();
+      myHeader = myHeader.set('Content-Type', 'application/json');
+      myHeader = myHeader.set('Authorization', 'Bearer ' + data.token);
+      return this.http.get(this.uri + '/contractadm/proceso/listarMuestra/' + envio + '/-', { headers: myHeader })
+    }else {
+      console.log("sin sesion");
+      return this.http.get(this.uri + '/contractadm/proceso/listarMuestra')
+    }
+  }
+
 }

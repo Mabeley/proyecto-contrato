@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  uri: 'https://3876-181-65-104-162.sa.ngrok.io',
-  //uri: 'http://localhost:8885'
+  //uri: 'https://3876-181-65-104-162.sa.ngrok.io',
+  uri: 'http://localhost:8885'
 };
 
 /*
