@@ -15,6 +15,7 @@ import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
 @NgModule({
   declarations: [
     AppComponent,
+    CambiarClaveComponent,
   
     
   ],
@@ -34,3 +35,4 @@ import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
