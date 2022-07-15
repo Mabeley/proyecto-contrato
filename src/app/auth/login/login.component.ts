@@ -29,8 +29,10 @@ export class LoginComponent implements OnInit {
       this.loginService.login(data).subscribe((rest:any)=>{
         console.log(rest);
          if(rest.estadoRespuesta == "OK"){
+          sessionStorage.setItem('usuario', rest.parametros.usuario);
+          //sessionStorage.setItem('usuario', JSON.stringify(rest.parametros.usuario));
           this.authForm.reset();
-          this.router.navigate(['carga-envio'])
+          this.router.navigate(['carga-envio']);
           }else{
             alert(rest.mensajeRespuesta);
           }
