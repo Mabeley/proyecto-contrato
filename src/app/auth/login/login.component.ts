@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit {
       console.log("NOOOOOOOOOOOOOOOO")
       this.loginService.login(data).subscribe((rest:any)=>{
         console.log("no entiendo")
-        if(rest.data==false){
-          console.log(rest.data.token)
+        if(rest.data!=''){
+          console.log("data",data)
         }else{
           alert("horror")
           
@@ -58,10 +58,11 @@ export class LoginComponent implements OnInit {
       })
     }
     onClick(){
-      console.log("no veo nad")
+      console.log("Ingrese")
       if(this.authForm.valid){
-
+        console.log("esta es la tercera")
         this.login(this.authForm.value)
+        console.log("Ingrese a la segunda parte")
       }else{
         alert("Formulario no valido")
       }
