@@ -8,11 +8,11 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
   public uri =environment.uri
 
-  constructor(private readonly httClient: HttpClient) {
+  constructor(private readonly http: HttpClient) {
     
    }
    login(data:any){
-    return this.httClient.post<any>(this.uri + '/contractadm/seguridad/acceso',data)
+    return this.http.post<any>(this.uri + '/contractadm/seguridad/acceso',data)
     // return this.httClient.post(this.uri,email,password)
 
    }

@@ -4,7 +4,7 @@ import { CargaEnvioComponent } from './carga-envio/carga-envio.component';
 
 const routes: Routes = [
   {path: '',
-  redirectTo:'/principal',
+  redirectTo:'/login',
  pathMatch:"full"
   },
 ];
