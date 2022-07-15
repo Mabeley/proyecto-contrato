@@ -9,6 +9,7 @@ import { LayoutModule } from './layout-shared/layout-shared.module';
 import { PerfilModule } from './perfil/perfil.module';
 import { PrincipalModule } from './principal/principal.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LayoutModule,
     CargaEnvioModule,
     AuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [], 
   bootstrap: [AppComponent]
