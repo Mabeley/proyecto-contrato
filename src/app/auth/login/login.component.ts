@@ -45,8 +45,9 @@ export class LoginComponent implements OnInit {
     //     }
     //   }))
     // }
+
     login(data:any){
-      console.log("NOOOOOOOOOOOOOOOO")
+      console.log("ejemplo login")
       this.loginService.login(data).subscribe((rest:any)=>{
         console.log("no entiendo")
         if(rest.data==false){
